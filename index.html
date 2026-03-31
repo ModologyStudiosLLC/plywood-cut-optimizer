@@ -92,6 +92,12 @@ body::before{content:'';position:fixed;inset:0;opacity:.015;pointer-events:none;
 .part label{font-size:9px;color:var(--text3);margin-bottom:2px;display:block}
 .rm{width:26px;height:26px;border:1px solid var(--border);border-radius:var(--radius-xs);background:transparent;color:var(--red);cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .rm:hover{background:rgba(244,63,94,0.1);border-color:var(--red)}
+
+
+.unit-toggle{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.ut-label{font-size:11px;font-weight:500;color:var(--text2)}
+.ut-btn{padding:4px 10px;border:1px solid var(--border);border-radius:14px;background:transparent;color:var(--text3);font-size:10px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
+.ut-btn.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 .add{width:100%;padding:8px;border:1.5px dashed var(--border);border-radius:var(--radius-sm);background:transparent;color:var(--text3);font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;margin:8px 0 18px;font-family:inherit}
 .add:hover{border-color:var(--accent);color:var(--accent2)}
 .go{width:100%;padding:12px;background:var(--accent);color:var(--bg);border:none;border-radius:var(--radius-sm);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:-0.2px}
@@ -165,7 +171,7 @@ body::before{content:'';position:fixed;inset:0;opacity:.015;pointer-events:none;
     <div class="panel">
       <div class="panel-head">Input</div>
       <div class="panel-body">
-        <div class="slbl">Sheet</div>
+        <div class="unit-toggle"><span class="ut-label">Units:</span><button class="ut-btn on" id="btn-in" onclick="setUnit('in')">Imperial (in)</button><button class="ut-btn" id="btn-mm" onclick="setUnit('mm')">Metric (mm)</button></div><div class="slbl">Sheet</div>
         <div class="igrid">
           <div class="igrp"><label>Width</label><div class="iwrap"><input type="number" id="sw" value="48" min="1" step="0.125"><span class="unit">in</span></div></div>
           <div class="igrp"><label>Height</label><div class="iwrap"><input type="number" id="sh" value="96" min="1" step="0.125"><span class="unit">in</span></div></div>
@@ -199,7 +205,7 @@ body::before{content:'';position:fixed;inset:0;opacity:.015;pointer-events:none;
   <div class="ft"><p>Built by <b>Modology Studios</b> · <a href="https://youtube.com/@ModologyStudios" target="_blank">Follow our journey</a></p></div>
 </div>
 <script>
-const CL=['#06b6d4','#f43f5e','#10b981','#8b5cf6','#f59e0b','#ec4899','#14b8a6','#a855f7','#22c55e','#3b82f6','#e11d48','#f97316'];
+let unit="in";const CF=25.4;function setUnit(u){if(u===unit)return;unit=u;const f=u==="mm"?CF:1/CF;["sw","sh","kf"].forEach(id=>{const el=document.getElementById(id);el.value=Math.round(parseFloat(el.value)*f*1000)/1000});PP.forEach(p=>{p.w=Math.round(p.w*f*1000)/1000;p.h=Math.round(p.h*f*1000)/1000});rn();document.getElementById("btn-in").classList.toggle("on",u==="in");document.getElementById("btn-mm").classList.toggle("on",u==="mm");document.querySelectorAll(".unit").forEach(el=>el.textContent=u)}const CL=['#06b6d4','#f43f5e','#10b981','#8b5cf6','#f59e0b','#ec4899','#14b8a6','#a855f7','#22c55e','#3b82f6','#e11d48','#f97316'];
 let pi=0,PP=[];
 function ad(n='',w='',h='',q=1){PP.push({id:pi++,n,w,h,q});rn()}
 function rm(id){PP=PP.filter(p=>p.id!==id);rn()}
