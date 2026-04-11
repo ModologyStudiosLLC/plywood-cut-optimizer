@@ -30,8 +30,8 @@ body::before{content:'';position:fixed;inset:0;opacity:.025;pointer-events:none;
 /* Header */
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 0;margin-bottom:40px;border-bottom:1px solid var(--border)}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-mark{width:34px;height:34px;display:flex;align-items:center;justify-content:center}
-.logo-mark svg{width:34px;height:34px}
+.logo-mark{height:32px;display:flex;align-items:center}
+.logo-mark img{height:32px;width:auto}
 .logo-txt{display:flex;flex-direction:column;gap:1px}
 .logo-name{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-0.3px;line-height:1.2}
 .logo-sub{font-size:10px;color:var(--text3);letter-spacing:0.8px;text-transform:uppercase}
@@ -144,11 +144,7 @@ body::before{content:'';position:fixed;inset:0;opacity:.025;pointer-events:none;
   <div class="hdr">
     <a class="logo" href="https://modologystudios.com" target="_blank">
       <div class="logo-mark">
-        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="34" height="34" rx="6" fill="#F7F4F0"/>
-          <polyline points="4,27 4,9 12,21 17,14" stroke="#242220" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <polyline points="17,14 22,21 30,9 30,27" stroke="#242220" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
+        <img src="logo.png" alt="Modology Studios">
       </div>
       <div class="logo-txt">
         <div class="logo-name">Plywood Optimizer</div>
